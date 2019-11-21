@@ -18,33 +18,28 @@ class HomePage extends React.Component {
         countryNamePopUp: false
     }
 
+    componentDidMount() {
+        !this.props.user && this.props.history.push('/login')
+    }
+
     handleClick = (e) => {
-        // debugger
-        // console.log(e.target)
-        // console.log(e.target.attributes.name.value)
-        // console.log(e.clientX, e.clientY)
         e.target && e.target.attributes && e.target.attributes.name && e.target.attributes.name.value &&
             this.setState({ visitedCountries: [...this.state.visitedCountries, e.target.id] })
     }
 
     handleHover = (e) => {
-        // console.log(e.target)
         e.target && e.target.attributes && e.target.attributes.name && e.target.attributes.name.value ?
-            //     console.log(e.target.attributes.name.value)
-            // console.log(e.clientX, e.clientY)
             this.setState({
                 countryNamePopUpValue: e.target.attributes.name.value,
                 countryNamePopUp: true
             })
             :
-
             this.setState({
                 countryNamePopUp: false
             })
     }
 
     mousePosition = (e) => {
-        console.log(e.clientX, e.clientY)
         this.setState({
             mouseXPosition: e.clientX,
             mouseYPosition: e.clientY

@@ -1,6 +1,7 @@
-.App {
+.site {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  min-height: 100vh
 }
 
 .App-logo {
@@ -58,4 +59,22 @@ path {
 .site-body {
   position: relative;
   top: 80px;
+  min-height: 100vh;
 }
+
+.login-images {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  align-items: center;
+  top: 30%;
+  left: 25%;
+}
+
+
+.login-images img {
+  width: 50%
+}
+
+
