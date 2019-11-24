@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 const Map = styled.div`
   margin: 1rem auto;
-  width: 100%;
+  width: 80%;
+  margin-top: 80px;
 
   svg {
     stroke: #fff;

@@ -1,6 +1,8 @@
 import React from 'react';
 import FacebookAuth from 'react-facebook-auth';
 import API from '../Helpers/API'
+import './Login.css';
+
 
 const MyFacebookButton = ({ onClick }) => (
     <img src={(require('../Assets/facebook-login.png'))} onClick={onClick} alt='facebook login button' />
@@ -10,11 +12,12 @@ const MyFacebookButton = ({ onClick }) => (
 class Login extends React.Component {
 
     componentDidMount() {
-        this.props.user ? this.props.history.push('/') : window.fbLoaded.then(() => {
-            window.FB.getLoginStatus(function (response) {
+        this.props.user && this.props.history.push('/')
+        window.fbLoaded.then(() => {
+            window.FB.getLoginStatus((response) => {
                 if (response.status === 'connected') {
-                    const accessToken = response.authResponse.accessToken;
-                    API.validate(response.authResponse.userID)
+                    // const accessToken = response.authResponse.accessToken;
+                    API.validate(response.authResponse.userID).then((user) => this.props.setUser(user))
                 }
             })
         })

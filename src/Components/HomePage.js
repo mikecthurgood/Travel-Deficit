@@ -3,28 +3,15 @@ import { VectorMap } from '@south-paw/react-vector-maps';
 import worldMap from '../Helpers/worldMap'
 import Map from '../Helpers/MapStyle'
 import CountryName from './CountryName'
-
-
-import logo from '../logo.svg';
-
+import CountryCard from './CountryCard'
 
 class HomePage extends React.Component {
 
     state = {
-        visitedCountries: [],
         mouseXPosition: 0,
         mouseYPosition: 0,
         countryNamePopUpValue: "",
-        countryNamePopUp: false
-    }
-
-    componentDidMount() {
-        !this.props.user && this.props.history.push('/login')
-    }
-
-    handleClick = (e) => {
-        e.target && e.target.attributes && e.target.attributes.name && e.target.attributes.name.value &&
-            this.setState({ visitedCountries: [...this.state.visitedCountries, e.target.id] })
+        countryNamePopUp: false,
     }
 
     handleHover = (e) => {
@@ -48,41 +35,43 @@ class HomePage extends React.Component {
 
     render() {
 
-        const { countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition, } = this.state
+        const { countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition } = this.state
+        const { selectedCountry, handleMapClick, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry } = this.props
+
+
         return (
-            <div className="App" >
-                <div id="chartdiv" style={{ width: "100%", height: "fit-content" }} onMouseMove={this.mousePosition}>
-                    <Map >
-                        <CountryName
-                            visible={countryNamePopUp}
-                            countryName={countryNamePopUpValue}
-                            x={mouseXPosition}
-                            y={mouseYPosition}
-                        />
-                        <VectorMap
-                            {...worldMap}
-                            onClick={this.handleClick}
-                            onMouseOver={this.handleHover}
-                            checkedLayers={this.state.visitedCountries}
-                        />
-                    </Map>
+            <div className='home-page-container'>
+                <div className={sidebarVisible ? 'home-page-map-with-stats' : 'home-page-map'}>
+                    <div id="chartdiv" style={{ width: "100%", height: "fit-content" }} onMouseMove={this.mousePosition}>
+                        <Map>
+                            <CountryName
+                                visible={countryNamePopUp}
+                                countryName={countryNamePopUpValue}
+                                x={mouseXPosition}
+                                y={mouseYPosition}
+                            />
+                            <VectorMap
+                                {...worldMap}
+                                onClick={handleMapClick}
+                                onMouseOver={this.handleHover}
+                                checkedLayers={visitedCountries}
+                            />
+                        </Map>
+                    </div>
+                    <CountryCard
+                        country={selectedCountry}
+                        closeSideBar={closeSideBar}
+                        handleClick={handleSideBarAccordionClick}
+                        activeIndex={activeIndex}
+                        addOrRemoveCountry={addOrRemoveCountry}
+                        visitedCountries={visitedCountries}
+                        selectedCountry={selectedCountry}
+                        sidebarVisible={sidebarVisible}
+
+                    />
                 </div>
 
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-              </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-              </a>
-                </header>
-            </div >
+            </div>
         )
     }
 

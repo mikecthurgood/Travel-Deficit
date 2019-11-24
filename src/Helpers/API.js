@@ -1,6 +1,11 @@
 const baseUrl = 'http://localhost:3000/'
+const addCountryToUserURL = baseUrl + 'add-user-country'
 
 class API {
+
+    static addCountryToUser = (userId, countryId) => (
+        this.post(addCountryToUserURL, { userId, countryId })
+    )
 
     static login = (fb_id, userData) => (
         fetch('http://localhost:3000/login', {
@@ -10,16 +15,16 @@ class API {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData)
-        }).then(resp => resp.json())
+        }).then(resp => resp.json()).then(console.log)
     )
 
-    static validate = (fb_id) => {
+    static validate = (fb_id) => (
         fetch('http://localhost:3000/validate', {
             headers: {
                 Authorization: fb_id
             }
-        }).then(resp => resp.json()).then(console.log)
-    }
+        }).then(resp => resp.json())
+    )
 
     static post = (url, data) =>
         fetch(url, {

@@ -1,0 +1,47 @@
+.country-card {
+    text-align: left;
+    overflow: hidden !important;
+    margin-top: 5px !important;
+  }
+  
+  .add-country-button {
+    background-color: #e68b24 !important;
+  }
+  
+  .add-to-wish-list {
+    background-color: #616ae7 !important;
+  }
+
+  .stats-sidebar {
+    height: 85%;
+    width: 40%;
+    background-color: white;
+    /* max-width: 260px; */
+    transition: 1.0s;
+    position: fixed;
+    right: 0;
+    top: 80px;
+    z-index: 20;
+    overflow-y: scroll;
+  }
+  
+  .sidebar-hidden {
+    height: 0;
+    width: 0;
+    transition: 1.0s;
+    position: sticky;
+    right: -20%;
+    top: 80px;
+    z-index: 20;
+    visibility: hidden;
+  }
+
+  .flag {
+    border-style: solid;
+    border-color: rgba(0,0,0,0.2);
+    height: 200px;
+  }
+
+  .country-card-header {
+    width: 100%;
+  }

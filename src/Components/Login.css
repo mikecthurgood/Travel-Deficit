@@ -1,0 +1,14 @@
+
+.login-images {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    align-items: center;
+    top: 30%;
+    left: 25%;
+  }
+  
+  .login-images img {
+    width: 50%
+  }
