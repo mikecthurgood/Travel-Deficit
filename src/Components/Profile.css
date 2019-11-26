@@ -6,6 +6,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    /* overflow-y: scroll; */
+    height: 80%;
 }
 
 .countries-container {
@@ -26,14 +28,14 @@
     margin-top: 0 !important;
 }
 
-.user-info {
-    margin-right: 30px;
-}
-
 .user-details {
     text-align: left;
     padding-left: 5px;
     margin-bottom: 20px;
+}
+
+.country-flag {
+    max-height: 20px;
 }
 
 /* .leaderboard {
@@ -44,10 +46,10 @@
 .leaderboard-item {
     width: 100%;
     font-size: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: left;
 }
-.profile-image {
+.leaderboard-profile-image {
     border-radius: 50%;
     height: 30px;
     position: relative;
@@ -81,6 +83,29 @@
     width: 70%;
 }
 
+.profile-row-item {
+    margin: 1%;
+}
+.profile-row-item-column {
+    margin: 1%;
+}
+
+
+
+.profile-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.profile-continent {
+    margin: 1%;
+    /* min-height: 100%; */
+    /* flex-basis: auto; */
+}
+
 
 
 
@@ -91,8 +116,8 @@
         flex-direction: column;}
 
     .adBanner {
-        position: fixed;
-        left: 6%;
+        position: relative;
+        left: -10%;
     }
     .banner-ad1:hover {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
@@ -114,6 +139,19 @@
         max-width: 200px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         margin-bottom: 10px;
+    }
+
+    .profile-row-column {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-basis: auto;
+        justify-content: center;
+        width: 80%;
+        /* max-width: 1200px; */
+        max-height: 60%;
+        /* overflow-x: scroll ; */
+     
     }
   }
 
@@ -140,7 +178,7 @@
         margin-bottom: 10px;
     }
     .banner-ad2:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+        box-shadow: 0 4px 8px 0 rgba(39, 38, 38, 0.6);
     }
     
     .banner-ad2 {
@@ -148,6 +186,19 @@
         max-width: 220px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         margin-bottom: 10px;
+    }
+
+    .profile-row-column {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-basis: auto;
+        justify-content: center;
+        /* width: 80%; */
+        /* max-width: 1200px; */
+        /* max-height: 60%; */
+        /* overflow-x: scroll ; */
+     
     }
   }
 

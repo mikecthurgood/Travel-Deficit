@@ -8,6 +8,7 @@ import API from './Helpers/API';
 import AddCountry from './Components/AddCountry'
 import SecondaryNav from './Components/SecondaryNav'
 import Profile from './Components/Profile'
+import Footer from './Components/Footer'
 
 class App extends React.PureComponent {
 
@@ -145,80 +146,85 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      <div className='site'>
-        <div className="App" >
-          <NavBar
-            username={this.state.username}
-            userImage={this.state.user_image_url}
-            logout={this.logout}
-          />
-          {this.state.username && <SecondaryNav />}
-          <div className='site-body'>
-            <Route exact path="/" render={(routerProps) =>
-              <HomePage
-                {...routerProps}
-                user={this.state.userID}
-                countries={this.state.countries}
-                handleMapClick={this.handleMapClick}
-                visitedCountries={this.state.visitedCountries}
-                selectedCountry={this.state.selectedCountry}
-                sidebarVisible={this.state.sidebarVisible}
-                closeSideBar={this.closeSideBar}
-                addOrRemoveCountry={this.addOrRemoveCountryButtonClick}
-                activeIndex={this.state.activeIndex}
-                handleSideBarAccordionClick={this.handleSideBarAccordionClick}
-                countryNamePopUp={this.state.countryNamePopUp}
-                countryNamePopUpValue={this.state.countryNamePopUpValue}
-                mouseXPosition={this.state.mouseXPosition}
-                mouseYPosition={this.state.mouseYPosition}
-                mousePosition={this.mousePosition}
-                handleHover={this.handleHover}
+      <>
+        <div className='site'>
+          <div className="App" >
+            <NavBar
+              username={this.state.username}
+              userImage={this.state.user_image_url}
+              logout={this.logout}
+            />
+            {this.state.username && <SecondaryNav />}
+            <div className='site-body'>
+              <Route exact path="/" render={(routerProps) =>
+                <HomePage
+                  {...routerProps}
+                  user={this.state.userID}
+                  countries={this.state.countries}
+                  handleMapClick={this.handleMapClick}
+                  visitedCountries={this.state.visitedCountries}
+                  selectedCountry={this.state.selectedCountry}
+                  sidebarVisible={this.state.sidebarVisible}
+                  closeSideBar={this.closeSideBar}
+                  addOrRemoveCountry={this.addOrRemoveCountryButtonClick}
+                  activeIndex={this.state.activeIndex}
+                  handleSideBarAccordionClick={this.handleSideBarAccordionClick}
+                  countryNamePopUp={this.state.countryNamePopUp}
+                  countryNamePopUpValue={this.state.countryNamePopUpValue}
+                  mouseXPosition={this.state.mouseXPosition}
+                  mouseYPosition={this.state.mouseYPosition}
+                  mousePosition={this.mousePosition}
+                  handleHover={this.handleHover}
 
-              />
-            } />
-            <Route path="/login" render={(routerProps) =>
-              <Login
-                {...routerProps}
-                guestLogin={this.guestLogin}
-                user={this.state.userID}
-                authenticate={this.authenticate}
-                setUser={this.setUser}
-              />
-            } />
-            <Route path="/add-country" render={(routerProps) =>
-              <AddCountry
-                {...routerProps}
-                guestLogin={this.guestLogin}
-                user={this.state.userID}
-                authenticate={this.authenticate}
-                setUser={this.setUser}
-                countries={this.state.countries}
-                handleCountryListClick={this.handleCountryListClick}
-                visitedCountries={this.state.visitedCountries}
-                selectedCountry={this.state.selectedCountry}
-                sidebarVisible={this.state.sidebarVisible}
-                closeSideBar={this.closeSideBar}
-                addOrRemoveCountry={this.addOrRemoveCountryButtonClick}
-                activeIndex={this.state.activeIndex}
-                handleSideBarAccordionClick={this.handleSideBarAccordionClick}
-              />
-            } />
-            <Route exact path="/profile" render={(routerProps) =>
-              <Profile
-                {...routerProps}
-                countries={this.state.countries}
-                handleMapClick={this.handleMapClick}
-                visitedCountries={this.state.visitedCountries}
-                visitedCountriesByName={this.state.visitedCountriesByName}
-                userName={this.state.username}
-                userAge={this.state.userAge}
-                badges={this.state.badges}
-                userImage={this.state.user_image_url}
-              />
-            } />
+                />
+              } />
+              <Route path="/login" render={(routerProps) =>
+                <Login
+                  {...routerProps}
+                  guestLogin={this.guestLogin}
+                  user={this.state.userID}
+                  authenticate={this.authenticate}
+                  setUser={this.setUser}
+                />
+              } />
+              <Route path="/add-country" render={(routerProps) =>
+                <AddCountry
+                  {...routerProps}
+                  guestLogin={this.guestLogin}
+                  user={this.state.userID}
+                  authenticate={this.authenticate}
+                  setUser={this.setUser}
+                  countries={this.state.countries}
+                  handleCountryListClick={this.handleCountryListClick}
+                  visitedCountries={this.state.visitedCountries}
+                  selectedCountry={this.state.selectedCountry}
+                  sidebarVisible={this.state.sidebarVisible}
+                  closeSideBar={this.closeSideBar}
+                  addOrRemoveCountry={this.addOrRemoveCountryButtonClick}
+                  activeIndex={this.state.activeIndex}
+                  handleSideBarAccordionClick={this.handleSideBarAccordionClick}
+                />
+              } />
+              <Route exact path="/profile" render={(routerProps) =>
+                <Profile
+                  {...routerProps}
+                  countries={this.state.countries}
+                  handleMapClick={this.handleMapClick}
+                  visitedCountries={this.state.visitedCountries}
+                  visitedCountriesByName={this.state.visitedCountriesByName}
+                  userName={this.state.username}
+                  userAge={this.state.userAge}
+                  badges={this.state.badges}
+                  userImage={this.state.user_image_url}
+                />
+              } />
+            </div>
           </div>
+
         </div>
-      </div>
+
+        {/* <Footer /> */}
+      </>
     );
   }
 

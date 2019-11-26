@@ -6,6 +6,7 @@ const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVi
 
     <div className='home-page-container'>
         <div className={sidebarVisible ? 'home-page-map-with-stats' : 'home-page-map'}>
+            <div className='home-page-title'><h3>Select a country to view stats and add to your visited list</h3></div>
             <WorldMapView
                 countryNamePopUp={countryNamePopUp}
                 countryNamePopUpValue={countryNamePopUpValue}

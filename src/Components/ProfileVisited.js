@@ -1,5 +1,4 @@
 import React from 'react'
-import WorldMapView from './WorldMapView'
 import { Card } from 'semantic-ui-react'
 import './Profile.css';
 
@@ -10,37 +9,30 @@ const ProfileVisited = ({ countries, visitedCountries }) => {
     const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
 
     return (
-        <div className='countries-container'>
-            <Card className='profile-world-card'>
-                <Card.Header>
-                    Your World Map
-                     </Card.Header>
-                <Card.Content>
-                    <WorldMapView
-                        visitedCountries={visitedCountries}
-                    />
-                </Card.Content>
-            </Card>
-            <Card>
-                <Card.Header>
-                    Countries Visited ({filteredCountries.length})
-                     </Card.Header>
-                <Card.Content>
-                    {continents && continents.map(continent =>
-                        <div key={continent}>
-                            <Card.Content>
+        <>
+            <h3>Visited Countries</h3>
+            {continents && continents.map(continent =>
+                <div className='profile-continent'>
+                    <Card>
+                        <Card.Header>
+                            <strong>{continent}</strong>
+                        </Card.Header>
+                        <Card.Content>
+                            {filteredCountries.map(cntry => (cntry.continent === continent ?
+                                <p key={cntry.id}>
+                                    {cntry.name}
+                                    <img src={require(`../Assets/world-flags/${cntry.code}.png`)}
+                                        alt='country-flag'
+                                        className='country-flag' />
+                                </p>
+                                :
+                                null))}
+                        </Card.Content>
+                    </Card>
+                </div>
+            )}
 
-                                <strong>{continent}</strong>
-                                <hr />
-
-                                {filteredCountries.map(cntry => (cntry.continent === continent ? <p key={cntry.id}>{cntry.name}</p> : null))}
-                            </Card.Content>
-                            <br />
-                        </div>
-                    )}
-                </Card.Content>
-            </Card>
-        </div >
+        </>
     )
 }
 

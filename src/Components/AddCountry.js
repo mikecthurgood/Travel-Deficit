@@ -26,15 +26,17 @@ class AddCountry extends React.Component {
             <>
                 <div className='country-list'>
                     <input type="text" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
-                    {countries.length > 0 && filteredCountries.map(country =>
-                        <div
-                            key={country.id}
-                            className={!this.props.visitedCountries.includes(country.code) ? 'country-item' : 'visited-country-item'}
-                            onClick={() => handleCountryListClick(country.name)}
-                        >
-                            {country.name}
-                        </div>
-                    )}
+                    <div className='country-list-items'>
+                        {countries.length > 0 && filteredCountries.map(country =>
+                            <div
+                                key={country.id}
+                                className={!this.props.visitedCountries.includes(country.code) ? 'country-item' : 'visited-country-item'}
+                                onClick={() => handleCountryListClick(country.name)}
+                            >
+                                {country.name}
+                            </div>
+                        )}
+                    </div>
                 </div >
                 <CountryCard
                     country={selectedCountry}
