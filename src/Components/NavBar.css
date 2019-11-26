@@ -25,3 +25,34 @@
     right: 2.5%;
     height: 50%
   }
+
+.nav-add-country {
+  width: 33.3%;
+  position: relative;
+  top: 30%;
+}
+  
+.nav-profile {
+  width: 33.3%;
+  position: relative;
+  top: 30%;
+}
+  
+.nav-recommendations {
+  width: 33.3%;
+  position: relative;
+  top: 30%;}
+
+.secondary-nav{
+  height: 40px;
+  background-color: #e68b24;
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  display: flex;
+  z-index: 999;
+
+  /* border: solid; */
+  /* border-color: #282c34 */
+}
+

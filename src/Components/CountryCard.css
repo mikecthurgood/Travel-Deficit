@@ -6,32 +6,47 @@
   
   .add-country-button {
     background-color: #e68b24 !important;
+    /* border-radius: 0 !important; */
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .close-sidebar-button {
+    /* border-radius: 0 !important; */
+    width: 100% !important;
   }
   
   .add-to-wish-list {
     background-color: #616ae7 !important;
+    /* border-radius: 0 !important; */
+  }
+
+  .side-panel-accordion {
+      transition: 0.5s !important;
   }
 
   .stats-sidebar {
-    height: 85%;
+    height: 80%;
     width: 40%;
     background-color: white;
-    /* max-width: 260px; */
     transition: 1.0s;
     position: fixed;
     right: 0;
-    top: 80px;
+    top: 130px;
     z-index: 20;
     overflow-y: scroll;
+    background-color: gray;
+    border-style: solid;
+    border-color: gray;
   }
   
   .sidebar-hidden {
-    height: 0;
+    /* height: 0; */
     width: 0;
-    transition: 1.0s;
+    /* transition: 1.0s; */
     position: sticky;
     right: -20%;
-    top: 80px;
+    top: 130px;
     z-index: 20;
     visibility: hidden;
   }

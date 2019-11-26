@@ -16,9 +16,10 @@ class AddCountry extends React.Component {
 
     render() {
         let countries = this.props.countries
-        let mappedCountries = countries.length > 0 && countries.map(country => country.name).sort()
-        console.log(mappedCountries)
-        let filteredCountries = countries.length > 0 && mappedCountries.filter(country => country.toLowerCase().includes(this.state.filterValue.toLowerCase()))
+        let sortedCountries = countries.length > 0 && countries.sort((a, b) => a.name.localeCompare(b.name))
+        // console.log(countries)
+        console.log(sortedCountries)
+        let filteredCountries = countries.length > 0 && sortedCountries.filter(country => country.name.toLowerCase().includes(this.state.filterValue.toLowerCase()))
         const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick } = this.props
 
         return (
@@ -27,16 +28,11 @@ class AddCountry extends React.Component {
                     <input type="text" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
                     {countries.length > 0 && filteredCountries.map(country =>
                         <div
-                            key={country}
-                            className={!this.props.visitedCountries.includes(country) ? 'country-item' : 'visited-country-item'}
-                            onClick={() => handleCountryListClick(country)}
+                            key={country.id}
+                            className={!this.props.visitedCountries.includes(country.code) ? 'country-item' : 'visited-country-item'}
+                            onClick={() => handleCountryListClick(country.name)}
                         >
-                            {country}
-                            <button
-                                className={!this.props.visitedCountries.includes(country) ? 'add-country-button' : 'remove-country-button'}
-                                onClick={() => this.props.addOrRemoveCountry(country)}>
-                                {!this.props.visitedCountries.includes(country) ? '+' : '-'}
-                            </button>
+                            {country.name}
                         </div>
                     )}
                 </div >

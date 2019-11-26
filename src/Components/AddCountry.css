@@ -27,12 +27,13 @@
     background-color: #e68b24;
   }
   
-  .add-country-button {
+  .add-country-list-button {
     float: right;
-    background-color: #616ae7;
+    /* background-color: #616ae7;
     border-radius: 50%;
-    color: white;
+    color: white; */
     margin-right: 1%;
+    /* width: 5%; */
   }
   
   
