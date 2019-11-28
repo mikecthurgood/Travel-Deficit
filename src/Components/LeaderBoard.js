@@ -8,49 +8,54 @@ const LeaderBoard = ({ userImage, userName, visitedCountries, userAge, countries
 
     return (
         <div className='leaderboard'>
-            <Card className='leaderboard-card'>
+            <Card className='profile-card'>
                 <Card.Header>
                     Leaderboard
                 </Card.Header>
                 <Card.Content >
-                    <div className='leaderboard'>
-                        <div className='leaderboard-item'>
-                            <span className='username-heading'><strong>Username</strong></span>
-                            <span className='ranking-score-heading'><strong>Travel Deficit</strong></span>
-                        </div>
-                        <div className='leaderboard-item'>
-                            <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 1' />
-                            <span className='username'>Bob Fleming</span>
-                            <span className='ranking-score'>+28</span>
-                        </div>
-                        {/* <hr className='break' /> */}
-                        <div className='leaderboard-item'>
-                            <img className='leaderboard-profile-image' src={userImage} alt={`${userName}`} />
-                            <span className='username'>{userName}</span>
-                            <span className='ranking-score'>{visitedCountries.length - userAge}</span>
-                        </div>
-                        {/* <hr className='break' /> */}
-                        <div className='leaderboard-item'>
-                            <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 3' />
-                            <span className='username'>Steve Rogers</span>
-                            <span className='ranking-score'>-18</span>
-                        </div>
-                        {/* <hr className='break' /> */}
-                        <div className='leaderboard-item'>
-                            <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 4' />
-                            <span className='username'>Tony Stark</span>
-                            <span className='ranking-score'>-23</span>
-                        </div>
-                        {/* <hr className='break' /> */}
-                        <div className='leaderboard-item'>
-                            <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 5' />
-                            <span className='username'>Wanda Maximov</span>
-                            <span className='ranking-score'>-44</span>
-                        </div>
-                    </div>
+                    {userName === 'Guest' ? <h2>Login to view leaderboard</h2> :
+                        <>
+                            <div className='leaderboard'>
+                                <div className='leaderboard-item'>
+                                    <span className='username-heading'><strong>Username</strong></span>
+                                    <span className='ranking-score-heading'><strong>Travel Deficit</strong></span>
+                                </div>
+                                <div className='leaderboard-item'>
+                                    <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 1' />
+                                    <span className='username'>Bob Fleming</span>
+                                    <span className='ranking-score'>+28</span>
+                                </div>
+                                {/* <hr className='break' /> */}
+                                <div className='leaderboard-item'>
+                                    <img className='leaderboard-profile-image' src={userImage ? userImage : require('../Assets/default-avatar.png')} alt={`${userName}`} />
+                                    <span className='username'>{userName}</span>
+                                    <span className='ranking-score'>{visitedCountries.length - userAge}</span>
+                                </div>
+                                {/* <hr className='break' /> */}
+                                <div className='leaderboard-item'>
+                                    <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 3' />
+                                    <span className='username'>Steve Rogers</span>
+                                    <span className='ranking-score'>-18</span>
+                                </div>
+                                {/* <hr className='break' /> */}
+                                <div className='leaderboard-item'>
+                                    <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 4' />
+                                    <span className='username'>Tony Stark</span>
+                                    <span className='ranking-score'>-23</span>
+                                </div>
+                                {/* <hr className='break' /> */}
+                                <div className='leaderboard-item'>
+                                    <img className='leaderboard-profile-image' src={require('../Assets/default-avatar.png')} alt='user 5' />
+                                    <span className='username'>Wanda Maximov</span>
+                                    <span className='ranking-score'>-44</span>
+                                </div>
+                            </div>
+                        </>}
                 </Card.Content>
+
+
             </Card>
-        </div>
+        </div >
 
     )
 }

@@ -8,20 +8,12 @@ const SecondaryNav = (props) => (
         <div className='nav-add-country'>
             <NavLink
                 className='secondary-nav-link'
-                to="/add-country"
+                to="/"
                 exact
                 activeStyle={{
                     color: 'white'
                 }}
-            ><h4>Country List</h4></NavLink> </div>
-        <div className='nav-profile'>     <NavLink
-            className='secondary-nav-link'
-            to="/profile"
-            exact
-            activeStyle={{
-                color: 'white'
-            }}
-        ><h4>Profile</h4></NavLink></div>
+            ><h4>Country Search</h4></NavLink> </div>
         <div className='nav-recommendations'>     <NavLink
             className='secondary-nav-link'
             to="/recommendations"
@@ -30,6 +22,14 @@ const SecondaryNav = (props) => (
                 color: 'white'
             }}
         ><h4>Recommendations</h4></NavLink></div>
+        <div className='nav-profile'>     <NavLink
+            className='secondary-nav-link'
+            to="/profile"
+            exact
+            activeStyle={{
+                color: 'white'
+            }}
+        ><h4>Profile</h4></NavLink></div>
     </div >
 
 )

@@ -20,6 +20,7 @@ class App extends React.PureComponent {
     userBadges: [],
     visitedCountries: [],
     visitedCountriesByName: [],
+    wishlist: [],
     countries: {},
     selectedCountry: "",
     sidebarVisible: false,
@@ -28,6 +29,7 @@ class App extends React.PureComponent {
     mouseYPosition: 0,
     countryNamePopUpValue: "",
     countryNamePopUp: false,
+    addCountryFilter: 'All'
   }
 
   componentDidMount() {
@@ -99,6 +101,11 @@ class App extends React.PureComponent {
     }
   }
 
+  addToWishList = (countryId) => {
+    API.addCountryToWishList(this.state.userID, countryId)
+      .then(console.log)
+  }
+
   closeSideBar = () => {
     this.setState({
       selectedCountry: "",
@@ -123,15 +130,21 @@ class App extends React.PureComponent {
   }
 
   authenticate = (resp) => {
-    if (resp.error) throw Error(resp.error)
     API.login(resp.id, { name: resp.name, image_url: resp.picture.data.url, fb_id: resp.id })
-    this.setState({ userID: resp.id, username: resp.name, user_image_url: resp.picture.data.url })
-    this.props.history.push('/')
+      .then(res => {
+        if (res.error) throw Error(res.error)
+        console.log(res)
+        this.setUser(res)
+        this.props.history.push('/')
+      })
   };
 
   setUser = (user) => {
-    const visited = user.countries && user.countries.map(country => country.code)
-    const visitedByName = user.countries && user.countries.map(country => country.name)
+    const countriesArray = user.user_countries && user.user_countries.map(country => country.country)
+    const visited = user.user_countries && countriesArray.map(country => country.code)
+    const visitedByName = user.user_countries && countriesArray.map(country => country.name)
+    const wishList = user.wishlists && user.wishlists.map(country => country.country.id)
+    console.log(user)
     this.setState({
       userID: user.id,
       username: user.name,
@@ -139,9 +152,29 @@ class App extends React.PureComponent {
       user_image_url: user.image_url,
       userBadges: user.badges,
       visitedCountries: visited,
-      visitedCountriesByName: visitedByName
+      visitedCountriesByName: visitedByName,
+      wishlist: wishList
     })
     this.props.history.goBack()
+  }
+
+  setFilter = (filter) => {
+    this.setState({
+      addCountryFilter: filter
+    })
+  }
+
+  updateAge = (e) => {
+    e.preventDefault()
+    const age = e.target['ageInput'].value
+    if (this.state.username === 'Guest') {
+      this.setState({ userAge: age })
+    } else {
+      API.updateAge(this.state.userID, age)
+        .then(resp => resp.json)
+        .then(console.log)
+        .then(() => this.setState({ userAge: age }))
+    }
   }
 
   render() {
@@ -175,6 +208,7 @@ class App extends React.PureComponent {
                   mouseYPosition={this.state.mouseYPosition}
                   mousePosition={this.mousePosition}
                   handleHover={this.handleHover}
+                  addToWishList={this.addToWishList}
 
                 />
               } />
@@ -203,6 +237,8 @@ class App extends React.PureComponent {
                   addOrRemoveCountry={this.addOrRemoveCountryButtonClick}
                   activeIndex={this.state.activeIndex}
                   handleSideBarAccordionClick={this.handleSideBarAccordionClick}
+                  setFilter={this.setFilter}
+                  addToWishList={this.addToWishList}
                 />
               } />
               <Route exact path="/profile" render={(routerProps) =>
@@ -216,6 +252,8 @@ class App extends React.PureComponent {
                   userAge={this.state.userAge}
                   badges={this.state.badges}
                   userImage={this.state.user_image_url}
+                  updateAge={this.updateAge}
+                  wishlist={this.state.wishlist}
                 />
               } />
             </div>

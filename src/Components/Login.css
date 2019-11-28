@@ -1,11 +1,11 @@
 
 .login-images {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 40vw;
     align-items: center;
-    top: 30%;
+    top: 200px;
     left: 25%;
   }
   

@@ -1,10 +1,20 @@
 const baseUrl = 'http://localhost:3000/'
+const usersUrl = baseUrl + 'users/'
 const addCountryToUserURL = baseUrl + 'add-user-country'
+const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
 
 class API {
 
     static addCountryToUser = (userId, countryId) => (
         this.post(addCountryToUserURL, { userId, countryId })
+    )
+
+    static addCountryToWishList = (userId, countryId) => (
+        this.post(addCountryToWishListURL, { userId, countryId })
+    )
+
+    static updateAge = (userId, age) => (
+        this.patch(usersUrl + userId, { age })
     )
 
     static login = (fb_id, userData) => (
@@ -15,7 +25,7 @@ class API {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData)
-        }).then(resp => resp.json()).then(console.log)
+        }).then(resp => resp.json())
     )
 
     static validate = (fb_id) => (
@@ -29,6 +39,15 @@ class API {
     static post = (url, data) =>
         fetch(url, {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(resp => resp.json())
+
+    static patch = (url, data) =>
+        fetch(url, {
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },

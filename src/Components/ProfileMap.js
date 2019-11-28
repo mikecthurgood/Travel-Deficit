@@ -11,7 +11,7 @@ const ProfileMap = ({ countries, visitedCountries }) => {
 
     return (
         <div className='countries-container'>
-            <Card className='profile-world-card'>
+            <Card className='profile-card'>
                 <Card.Header>
                     Your World Map
                      </Card.Header>

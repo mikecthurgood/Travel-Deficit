@@ -6,10 +6,11 @@ import UserInfo from './UserInfo'
 import AdBanner from './AdBanner'
 import LeaderBoard from './LeaderBoard'
 import ProfileVisited from './ProfileVisited'
+import ProfileWishList from './ProfileWishList'
 
 
 
-const Profile = ({ countries, visitedCountries, userName, userAge, badges, userImage, bannerNumber }) => {
+const Profile = ({ countries, visitedCountries, userName, userAge, badges, userImage, bannerNumber, updateAge, updateGuestAge, wishlist }) => {
 
     const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
     // const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
@@ -27,6 +28,8 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                         userAge={userAge}
                         badges={badges}
                         userImage={userImage}
+                        updateAge={updateAge}
+                        updateGuestAge={updateGuestAge}
                     />
                 </div>
                 <div className='profile-row-item'>
@@ -50,10 +53,17 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
                 </div>
             </div>
 
-            <div className='profile-row-column'>
+            <div className='profile-row-visited-container'>
                 <ProfileVisited
                     countries={countries}
                     visitedCountries={visitedCountries}
+                />
+            </div>
+
+            <div className='profile-row-visited-container'>
+                <ProfileWishList
+                    countries={countries}
+                    wishlist={wishlist}
                 />
             </div>
 

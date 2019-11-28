@@ -1,20 +1,41 @@
 .country-list {
     color: white;
     width: 40%;
-    position: absolute;
+    position: relative;
     left: 30%;
-    top: 200px;
+    top: 30px;
     justify-content: center;
     height: 60%;
-    /* overflow-y: hidden; */
-
-    
+    /* overflow-y: hidden; */ 
   }
-  .country-list-items {
+
+  .filter-button {
+    width: 33.3%;
+    margin-left: 1px;
+  }
+
+  .filter-button:first-child {
+    width: 33.3%;
+    margin-left: 0px;
+  }
+
+  .country-list-container{
     height: 100%;
+    width: 100%;
+    /* min-height: 865px; */
+  }
 
-    overflow-y: scroll;
+  .filter-button Button {
+    border-radius: 0 !important;
+  }
 
+  .country-list-items {
+    height: 90%;
+margin-bottom: 20px;  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
   }
   
   

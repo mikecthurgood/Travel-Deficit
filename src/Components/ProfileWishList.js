@@ -3,14 +3,14 @@ import { Card } from 'semantic-ui-react'
 import './Profile.css';
 
 
-const ProfileVisited = ({ countries, visitedCountries }) => {
+const ProfileWishlist = ({ countries, wishlist }) => {
 
-    const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
+    const filteredCountries = countries.length > 0 && countries.filter(country => wishlist.includes(country.id)).sort((a, b) => a.name.localeCompare(b.name))
     const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
 
     return (
         <>
-            {filteredCountries.length > 0 && <h2 className='profile-row-heading'>Visited Countries</h2>}
+            {filteredCountries.length > 0 && <h2 className='profile-row-heading'>Country Wishlist</h2>}
             <div className='profile-row-visited'>
                 {continents && continents.map(continent =>
                     <>
@@ -41,4 +41,4 @@ const ProfileVisited = ({ countries, visitedCountries }) => {
     )
 }
 
-export default ProfileVisited
+export default ProfileWishlist

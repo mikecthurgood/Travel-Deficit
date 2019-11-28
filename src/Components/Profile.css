@@ -1,23 +1,7 @@
-.profile-container {
-    position: relative;
-    top: 20px;
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* overflow-y: scroll; */
-    height: 80%;
-}
-
-.countries-container {
-    display: flex;
-    flex-direction: column;
-}
-
 .profile-world-card {
     padding-top: 0 !important;
     width: fit-content;
+    min-height: 100% !important;
 }
 
 #chartdiv {
@@ -26,6 +10,7 @@
 
 .sc-bdVaJa {
     margin-top: 0 !important;
+    min-width: 275px;
 }
 
 .user-details {
@@ -35,13 +20,8 @@
 }
 
 .country-flag {
-    max-height: 20px;
+    max-height: 100px;
 }
-
-/* .leaderboard {
-    margin-top: 35px;
-} */
-
 
 .leaderboard-item {
     width: 100%;
@@ -79,192 +59,154 @@
     left: 65px;
 }
 
-.break {
-    width: 70%;
-}
-
 .profile-row-item {
     margin: 1%;
-}
-.profile-row-item-column {
-    margin: 1%;
-}
-
-
-
-.profile-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+    height: 100%;
+    width: fit-content;
 }
 
-.profile-continent {
-    margin: 1%;
-    /* min-height: 100%; */
-    /* flex-basis: auto; */
+.profile-visited-heading {
+    display: relative;
+    top: 0;
+    left: 30%;
 }
 
+.profile-country-card {
+    width: fit-content !important;
+    height: 150px;
+    margin: 5px !important;
+}
 
+.profile-card {
+    height: 270px;
+}
 
+@media only screen and (min-width: 1070px) {
 
-
-@media only screen and (min-width: 1200px) {
-    .banner-container{
-        display: flex;
-        flex-direction: column;}
-
-    .adBanner {
+    .profile-container {
         position: relative;
-        left: -10%;
-    }
-    .banner-ad1:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad1 {
-        max-height: 600px;
-        max-width: 200px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
-    }
-
-    .banner-ad2:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+        top: 20px;
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 100%;
     }
     
-    .banner-ad2 {
-        max-height: 600px;
-        max-width: 200px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
+    .profile-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        height: fit-content;
+        box-sizing: border-box;
+        max-height: 50%;
     }
 
-    .profile-row-column {
+    .age-form-span {
+        display: inline-flex;
+        /* vertical-align: middle; */
+    }
+
+    .age-form {
+        max-width: 50px;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    .profile-row-visited {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    .profile-row-visited::-webkit-scrollbar {
+        /* width: 0; */
+        scrollbar-width: none;
+        height: 0;
+        background: rgba(255, 255, 255)
+    }
+
+    .profile-row-visited-container {
+        height: fit-content;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        margin-left: 6%;
+    }
+
+    .profile-row-heading {
+        float: left;
+        /* color: white */
+
+    }
+
+    }
+
+
+
+    @media only screen and (max-width: 1070px) {
+        .profile-container {
+            position: relative;
+            top: 20px;
+            margin-left: 1rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .profile-row {
+            display: flex;
+            flex-direction: column-reverse;
+            flex-wrap: wrap;
+            width: fit-content;
+            height: fit-content;
+            box-sizing: border-box;
+            max-height: 50%;
+
+        }
+
+    .profile-country-card {
+        width: fit-content !important;
+        /* height: 150px; */
+        width: 250px !important;
+        margin: 5px !important;
+    }
+
+    .profile-row-visited {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        flex-basis: auto;
-        justify-content: center;
-        width: 80%;
-        /* max-width: 1200px; */
-        max-height: 60%;
-        /* overflow-x: scroll ; */
-     
-    }
-  }
-
-  @media only screen and (max-width: 1200px) {
-    .adBanner{
-        visibility: hidden;
-        position: absolute;
-        left: -100%;
-        transition: 0.5s
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        box-sizing: border-box;
+        height: 100%;
     }
 
-    .banner-container{
-        display: flex;
-        flex-direction: column;}
-
-    .banner-ad1:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad1 {
-        max-height: 600px;
-        max-width: 220px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
-    }
-    .banner-ad2:hover {
-        box-shadow: 0 4px 8px 0 rgba(39, 38, 38, 0.6);
-    }
-    
-    .banner-ad2 {
-        max-height: 600px;
-        max-width: 220px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
+    .profile-row-visited::-webkit-scrollbar {
+        /* width: 0; */
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255)
     }
 
-    .profile-row-column {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        flex-basis: auto;
-        justify-content: center;
-        /* width: 80%; */
-        /* max-width: 1200px; */
-        /* max-height: 60%; */
-        /* overflow-x: scroll ; */
-     
-    }
-  }
-
-  @media only screen and (min-width: 1600px) {
-    .banner-container{
-        display: flex;
-        flex-direction: column;}
-
-    .adBanner {
-        position: fixed;
-        left: 1%;
-        transition: 0.5s
-
-    }
-    .banner-ad1:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad1 {
-        max-width: 350px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
+    .profile-row-visited-container {
+        height: fit-content;
+        width: fit-content;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        margin-left: 1%;
     }
 
-    .banner-ad2:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad2 {
-        max-height: 600px;
-        max-width: 250px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
-    }
-  }
+        }
 
-  @media only screen and (min-width: 1800px) {
-    .banner-container{
-        display: flex;
-        flex-direction: row;}
-
-    .adBanner {
-        position: fixed;
-        left: 1%;
-        transition: 0.5s
-
-    }
-    .banner-ad1:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad1 {
-        max-width: 350px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
-        margin-right: 10px;
-    }
-
-    .banner-ad2:hover {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-    }
-    
-    .banner-ad2 {
-        max-height: 600px;
-        max-width: 250px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        margin-bottom: 10px;
-    }
-  }

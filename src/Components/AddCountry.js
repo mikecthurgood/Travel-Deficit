@@ -1,6 +1,9 @@
 import React from 'react'
 import './AddCountry.css'
 import CountryCard from './CountryCard'
+import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
+
 
 // import API from '../Helpers/API'
 
@@ -20,11 +23,18 @@ class AddCountry extends React.Component {
         // console.log(countries)
         console.log(sortedCountries)
         let filteredCountries = countries.length > 0 && sortedCountries.filter(country => country.name.toLowerCase().includes(this.state.filterValue.toLowerCase()))
-        const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick } = this.props
+        const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick, setFilter, addToWishList } = this.props
 
         return (
-            <>
+            <div className='country-list-container'>
+                <div className='home-page-title'><h3>Select a country to view stats and options or <Link to='/'>find on map</Link></h3></div>
+
                 <div className='country-list'>
+                    <div className='filters'>
+                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('all')} fluid>All Countries</Button></div>
+                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('visited')} fluid>Visited Only</Button></div>
+                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('not-visited')} fluid>Not Visited Only</Button></div>
+                    </div>
                     <input type="text" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
                     <div className='country-list-items'>
                         {countries.length > 0 && filteredCountries.map(country =>
@@ -47,9 +57,9 @@ class AddCountry extends React.Component {
                     visitedCountries={visitedCountries}
                     selectedCountry={selectedCountry}
                     sidebarVisible={sidebarVisible}
-
+                    addToWishList={addToWishList}
                 />
-            </>
+            </div>
         )
     }
 }

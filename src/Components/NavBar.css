@@ -1,5 +1,7 @@
 #main-logo {
     width: 25%;
+    max-width: 400px;
+    min-width: 100px;
     position: absolute;
     top: 35%;
     left: 38%;
