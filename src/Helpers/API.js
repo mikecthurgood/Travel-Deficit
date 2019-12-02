@@ -4,6 +4,10 @@ const addCountryToUserURL = baseUrl + 'add-user-country'
 const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
 
 class API {
+    static countryInfo = () => (
+        fetch('https://travel-deficit-api.herokuapp.com/countries-and-info')
+            .then(res => res.json())
+    )
 
     static addCountryToUser = (userId, countryId) => (
         this.post(addCountryToUserURL, { userId, countryId })

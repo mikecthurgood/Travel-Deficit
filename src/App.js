@@ -35,8 +35,7 @@ class App extends React.PureComponent {
 
   componentDidMount() {
     !this.state.username && this.props.history.push('/login')
-    fetch('http://localhost:3000/countries-and-info')
-      .then(res => res.json())
+    API.countryInfo()
       .then(countries => this.setState({ countries }))
   }
 
