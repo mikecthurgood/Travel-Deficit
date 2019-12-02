@@ -5,7 +5,7 @@ import SidePanelAccordion from './SidePanelAccordion'
 import { Button } from 'semantic-ui-react'
 
 
-const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRemoveCountry, visitedCountries, sidebarVisible, selectedCountry, addToWishList }) => {
+const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRemoveCountry, visitedCountries, sidebarVisible, selectedCountry, addToWishList, wishlist }) => {
 
     return (
         <div className={selectedCountry && sidebarVisible ? 'stats-sidebar' : 'sidebar-hidden'}>
@@ -33,8 +33,8 @@ const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRem
                                 className='add-to-wish-list'
                                 onClick={() => addToWishList(country.id)}
                             >
-                                I Want To Go Here
-                        </Button>}
+                                {!wishlist.includes(country.id) ? 'I Want To Go Here' : 'Remove From Wishlist'}
+                            </Button>}
                         <Button fluid
                             className='close-sidebar-button'
                             onClick={closeSideBar}>

@@ -9,6 +9,7 @@ import AddCountry from './Components/AddCountry'
 import SecondaryNav from './Components/SecondaryNav'
 import Profile from './Components/Profile'
 import Footer from './Components/Footer'
+import Recommendations from './Components/Recommendations'
 
 class App extends React.PureComponent {
 
@@ -102,9 +103,16 @@ class App extends React.PureComponent {
   }
 
   addToWishList = (countryId) => {
-    API.addCountryToWishList(this.state.userID, countryId)
-      .then(console.log)
+    if (!this.state.wishlist.includes(countryId)) {
+      this.setState({ wishlist: [...this.state.wishlist, countryId] })
+      API.addCountryToWishList(this.state.userID, countryId)
+    } else {
+      const filteredCountries = this.state.wishlist.filter(cntry => cntry !== countryId)
+      this.setState({ wishlist: filteredCountries })
+      API.addCountryToWishList(this.state.userID, countryId)
+    }
   }
+
 
   closeSideBar = () => {
     this.setState({
@@ -209,6 +217,8 @@ class App extends React.PureComponent {
                   mousePosition={this.mousePosition}
                   handleHover={this.handleHover}
                   addToWishList={this.addToWishList}
+                  wishlist={this.state.wishlist}
+
 
                 />
               } />
@@ -239,6 +249,8 @@ class App extends React.PureComponent {
                   handleSideBarAccordionClick={this.handleSideBarAccordionClick}
                   setFilter={this.setFilter}
                   addToWishList={this.addToWishList}
+                  wishlist={this.state.wishlist}
+
                 />
               } />
               <Route exact path="/profile" render={(routerProps) =>
@@ -253,6 +265,13 @@ class App extends React.PureComponent {
                   badges={this.state.badges}
                   userImage={this.state.user_image_url}
                   updateAge={this.updateAge}
+                  wishlist={this.state.wishlist}
+                />
+              } />
+              <Route path="/recommendations" render={(routerProps) =>
+                <Recommendations
+                  {...routerProps}
+                  countries={this.state.countries}
                   wishlist={this.state.wishlist}
                 />
               } />

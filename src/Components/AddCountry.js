@@ -23,7 +23,7 @@ class AddCountry extends React.Component {
         // console.log(countries)
         console.log(sortedCountries)
         let filteredCountries = countries.length > 0 && sortedCountries.filter(country => country.name.toLowerCase().includes(this.state.filterValue.toLowerCase()))
-        const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick, setFilter, addToWishList } = this.props
+        const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick, setFilter, addToWishList, wishlist } = this.props
 
         return (
             <div className='country-list-container'>
@@ -58,6 +58,7 @@ class AddCountry extends React.Component {
                     selectedCountry={selectedCountry}
                     sidebarVisible={sidebarVisible}
                     addToWishList={addToWishList}
+                    wishlist={wishlist}
                 />
             </div>
         )

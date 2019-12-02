@@ -28,6 +28,10 @@ class API {
         }).then(resp => resp.json())
     )
 
+    static recommendations = (country) => (
+        fetch(`https://www.triposo.com/api/20190906/location.json?id=${country}&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f`).then(resp => resp.json())
+    )
+
     static validate = (fb_id) => (
         fetch('http://localhost:3000/validate', {
             headers: {

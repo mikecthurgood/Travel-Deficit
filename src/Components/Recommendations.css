@@ -1,0 +1,21 @@
+.recommendations-page-container {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding-left: 20px;
+    justify-content: center;
+    
+}
+
+.recommendation-card {
+    /* height: 100%; */
+    margin: 10px !important;
+    width: 80% !important;
+
+}
+
+.country-image {
+    width: 100%;
+}

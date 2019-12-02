@@ -3,7 +3,7 @@ import CountryCard from './CountryCard'
 import WorldMapView from './WorldMapView'
 import { Link } from 'react-router-dom'
 
-const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition, mousePosition, handleHover, addToWishList }) => (
+const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, countryNamePopUp, countryNamePopUpValue, mouseXPosition, mouseYPosition, mousePosition, handleHover, addToWishList, wishlist }) => (
 
     <div className='home-page-container'>
         <div className={sidebarVisible ? 'home-page-map-with-stats' : 'home-page-map'}>
@@ -28,6 +28,8 @@ const HomePage = ({ selectedCountry, handleMapClick, visitedCountries, sidebarVi
                 selectedCountry={selectedCountry}
                 sidebarVisible={sidebarVisible}
                 addToWishList={addToWishList}
+                wishlist={wishlist}
+
 
             />
         </div>
