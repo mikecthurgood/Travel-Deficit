@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'https://travel-deficit-api.herokuapp.com/'
 const usersUrl = baseUrl + 'users/'
 const addCountryToUserURL = baseUrl + 'add-user-country'
 const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
@@ -18,7 +18,7 @@ class API {
     )
 
     static login = (fb_id, userData) => (
-        fetch('http://localhost:3000/login', {
+        fetch(baseUrl + 'login', {
             method: 'POST',
             headers: {
                 Authorization: fb_id,
@@ -33,7 +33,7 @@ class API {
     )
 
     static validate = (fb_id) => (
-        fetch('http://localhost:3000/validate', {
+        fetch(baseUrl + 'validate', {
             headers: {
                 Authorization: fb_id
             }
