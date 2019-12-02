@@ -95,5 +95,14 @@ path {
   background-image: linear-gradient(white, rgb(235, 235, 235))
 }
 
+.show-map-popup-country-name {
+  background-color: white;
+  border-style: solid;
+  border-color: grey;
+  font-size: medium;
+  border-radius: 3px;
+  padding: 5px;
+}
+
 
 

@@ -4,9 +4,9 @@ import CountryCard from './CountryCard'
 const CountryName = ({ visible, x, y, countryName }) => {
     let popupStyle = {
         color: 'black',
-        position: 'absolute',
+        position: 'fixed',
         left: x,
-        top: y + 30,
+        top: y + 20,
         fontFamily: 'verdana'
     }
     return (
