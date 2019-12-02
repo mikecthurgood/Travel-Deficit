@@ -52,7 +52,8 @@ class Recommendations extends React.Component {
         const wl = this.state.wishlist
         return (
             <div className='recommendations-page-container'>
-                {this.props.countries.length > 0 && wl.map(country => (
+                <h1>Recommendations Coming Soon!</h1>
+                {/* {this.props.countries.length > 0 && wl.map(country => (
                     <Card className='recommendation-card'>
                         <Card.Header>
                             <h2>{country.id}</h2>
@@ -61,7 +62,7 @@ class Recommendations extends React.Component {
                             <img className='country-image' src={country.images[0].source_url} />
                         </Card.Content>
                     </Card>
-                ))}
+                ))} */}
             </div>
         )
     }

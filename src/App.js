@@ -10,6 +10,7 @@ import SecondaryNav from './Components/SecondaryNav'
 import Profile from './Components/Profile'
 import Footer from './Components/Footer'
 import Recommendations from './Components/Recommendations'
+import PrivacyPolicy from './Components/PrivacyPolicy'
 
 class App extends React.PureComponent {
 
@@ -272,6 +273,11 @@ class App extends React.PureComponent {
                   {...routerProps}
                   countries={this.state.countries}
                   wishlist={this.state.wishlist}
+                />
+              } />
+              <Route path="/privacy-policy" render={(routerProps) =>
+                <PrivacyPolicy
+                  {...routerProps}
                 />
               } />
             </div>

@@ -17,6 +17,20 @@ const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRem
                 </Button>
                 {country &&
                     <div>
+                        <Button
+                            fluid className='add-country-button'
+                            onClick={() => addOrRemoveCountry(country.name)}
+                        >
+                            {!visitedCountries.includes(country.code) ? 'Add To Visited' : 'Remove From Visited'}
+                        </Button>
+                        {!visitedCountries.includes(country.code) &&
+                            <Button fluid
+                                className='add-to-wish-list'
+                                onClick={() => addToWishList(country.id)}
+                            >
+                                {!wishlist.includes(country.id) ? 'I Want To Go Here' : 'Remove From Wishlist'}
+                            </Button>}
+
                         <SidePanelAccordion
                             handleClick={handleClick}
                             activeIndex={activeIndex}
@@ -40,6 +54,7 @@ const CountryCard = ({ country, closeSideBar, handleClick, activeIndex, addOrRem
                             onClick={closeSideBar}>
                             Close
                         </Button>
+
                     </div>
 
                 }
