@@ -5,7 +5,7 @@ const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
 
 class API {
     static countryInfo = () => (
-        fetch('https://travel-deficit-api.herokuapp.com/countries-and-info')
+        fetch(baseUrl + '/countries-and-info')
             .then(res => res.json())
     )
 
@@ -46,35 +46,12 @@ class API {
     )
 
     static createFlightSession = (departureLocation, destination, departureDate, returnDate) => (
-        fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", {
-            "method": "POST",
-            "headers": {
-                "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-                "x-rapidapi-key": "0d5efc74c5msh7dfd2aaa64fdf54p129ba0jsne3580f668b49",
-                'Content-Type': 'application/json'
-            },
-            "body": {
-                "inboundDate": returnDate,
-                "cabinClass": "economy",
-                "children": "0",
-                "infants": "0",
-                "country": "UK",
-                "currency": "GBP",
-                "locale": "en-UK",
-                "originPlace": departureLocation,
-                "destinationPlace": destination,
-                "outboundDate": departureDate,
-                "adults": "1"
-            }
-        }).then(resp => resp.json().then(console.log)
-            .catch(err => {
-                console.log(err)
-            })
-        ))
+        this.post(baseUrl + 'countries/recommendations', { departureLocation, destination, departureDate, returnDate })
+    ).then(console.log)
 
-    static recommendations = (country) => (
-        fetch(`https://www.triposo.com/api/20190906/location.json?id=${country}&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f`).then(resp => resp.json()).then(console.log)
-    )
+    // static recommendations = (country) => (
+    //     fetch(`https://www.triposo.com/api/20190906/location.json?id=${country}&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f`).then(resp => resp.json()).then(console.log)
+    // )
 
     static validate = (fb_id) => (
         fetch(baseUrl + 'validate', {
