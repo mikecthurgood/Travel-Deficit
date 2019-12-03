@@ -7,6 +7,8 @@ import AdBanner from './AdBanner'
 import LeaderBoard from './LeaderBoard'
 import ProfileVisited from './ProfileVisited'
 import ProfileWishList from './ProfileWishList'
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 
 
 
@@ -54,10 +56,13 @@ const Profile = ({ countries, visitedCountries, userName, userAge, badges, userI
             </div>
 
             <div className='profile-row-visited-container'>
-                <ProfileVisited
-                    countries={countries}
-                    visitedCountries={visitedCountries}
-                />
+                <ScrollContainer className="scroll-container" horizontal={true} vertical={false}>
+                    <ProfileVisited
+                        countries={countries}
+                        visitedCountries={visitedCountries}
+                    />
+                </ScrollContainer>
+
             </div>
 
             <div className='profile-row-visited-container'>

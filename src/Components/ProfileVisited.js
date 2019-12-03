@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card } from 'semantic-ui-react'
 import './Profile.css';
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 
 
 const ProfileVisited = ({ countries, visitedCountries }) => {
@@ -11,7 +13,7 @@ const ProfileVisited = ({ countries, visitedCountries }) => {
     return (
         <>
             {filteredCountries.length > 0 && <h2 className='profile-row-heading'>Visited Countries</h2>}
-            <div className='profile-row-visited'>
+            <ScrollContainer className="profile-row-visited" horizontal={true} vertical={false}>
                 {continents && continents.map(continent =>
                     <>
                         <Card className='profile-country-card'>
@@ -36,7 +38,7 @@ const ProfileVisited = ({ countries, visitedCountries }) => {
                     </>
                 )
                 }
-            </div>
+            </ScrollContainer>
         </>
     )
 }

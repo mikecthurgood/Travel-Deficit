@@ -11,7 +11,7 @@ const SecondaryNav = (props) => (
                 to="/"
                 exact
                 activeStyle={{
-                    color: 'white'
+                    color: 'blue'
                 }}
             ><h4>Country Search</h4></NavLink> </div>
         <div className='nav-recommendations'>     <NavLink
@@ -19,7 +19,7 @@ const SecondaryNav = (props) => (
             to="/recommendations"
             exact
             activeStyle={{
-                color: 'white'
+                color: 'blue'
             }}
         ><h4>Recommendations</h4></NavLink></div>
         <div className='nav-profile'>     <NavLink
@@ -27,7 +27,7 @@ const SecondaryNav = (props) => (
             to="/profile"
             exact
             activeStyle={{
-                color: 'white'
+                color: 'blue'
             }}
         ><h4>Profile</h4></NavLink></div>
     </div >

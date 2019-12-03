@@ -2,16 +2,28 @@
     color: white;
     width: 40%;
     position: relative;
-    left: 30%;
     top: 30px;
     justify-content: center;
     height: 60%;
+    min-width: 343px;
+
     /* overflow-y: hidden; */ 
   }
 
   .filter-button {
     width: 33.3%;
     margin-left: 1px;
+    min-width: 114px;
+  }
+
+
+  .country-list-page-title {
+    color: black;
+    overflow: visible;
+    padding-bottom: 5px;
+    width: 100%;
+    min-width: 343px;
+
   }
 
   .filter-button:first-child {
@@ -22,6 +34,8 @@
   .country-list-container{
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
     /* min-height: 865px; */
   }
 
@@ -31,7 +45,11 @@
 
   .country-list-items {
     height: 90%;
-margin-bottom: 20px;  }
+margin-bottom: 20px;
+width: 100%;
+min-width: 343px;
+
+  }
 
   .filters {
     display: flex;
@@ -41,7 +59,7 @@ margin-bottom: 20px;  }
   
   .country-item {
     width: 100%;
-    min-width: fit-content;
+    min-width: 343px;
     background-color: #e68b24;
     margin-top: 3px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -61,6 +79,8 @@ margin-bottom: 20px;  }
     margin-top: 3px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    min-width: 343px;
+
   }
   
   .visited-country-item:hover {
@@ -83,4 +103,6 @@ margin-bottom: 20px;  }
   
   #add-country-search-filter {
     width: 100%;
+    min-width: 343px;
+
   }
