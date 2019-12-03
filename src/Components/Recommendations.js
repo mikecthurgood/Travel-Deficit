@@ -28,8 +28,10 @@ class Recommendations extends React.Component {
 
         this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
 
-        this.props.countries.length > 0 && wishlist.map(country => API.travelLocations(country.name).then
-            (json => console.log(json['Places'])))
+        this.props.countries.length > 0 && wishlist.map(country => API.travelLocations(country.name)
+            .then(json => API.createFlightSession("LOND-sky", json['Places'][1]['PlaceId'], this.dateInXDays(7), this.dateInXDays(14))))
+
+        // console.log(json['Places'][1])))
         // (json => json['Places'].map(country => console.log(country['PlaceName']))))
         // console.log(this.state.wishlist)
         // fetch('http://localhost:3004/countries').then(resp => resp.json()).then(console.log)
@@ -51,6 +53,14 @@ class Recommendations extends React.Component {
     //     })
     // }
 
+    dateInXDays = (x = 0) => {
+        let date = new Date();
+        const dd = String(date.getDate() + x).padStart(2, '0')
+        const mm = String(date.getMonth() + 1).padStart(2, '0')
+        const yyyy = date.getFullYear()
+        date = yyyy + '-' + mm + '-' + dd
+        return date
+    }
 
 
 

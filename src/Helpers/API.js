@@ -66,12 +66,11 @@ class API {
                 "outboundDate": departureDate,
                 "adults": "1"
             }
-        }).then(response => {
-            console.log(response)
-        }).catch(err => {
-            console.log(err)
-        })
-    )
+        }).then(resp => resp.json().then(console.log)
+            .catch(err => {
+                console.log(err)
+            })
+        ))
 
     static recommendations = (country) => (
         fetch(`https://www.triposo.com/api/20190906/location.json?id=${country}&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f`).then(resp => resp.json()).then(console.log)
