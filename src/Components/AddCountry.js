@@ -41,7 +41,7 @@ class AddCountry extends React.Component {
                         <div className='filter-button'><Button color={this.props.filter === 'visited' ? 'orange' : 'blue'} onClick={() => setFilter('visited')} fluid>Visited</Button></div>
                         <div className='filter-button'><Button color={this.props.filter === 'not-visited' ? 'orange' : 'blue'} onClick={() => setFilter('not-visited')} fluid>Not Visited</Button></div>
                     </div>
-                    <input type="text" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
+                    <input type="text" autocomplete="off" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
                     <div className='country-list-items'>
                         {countries.length > 0 && filteredCountries.map(country =>
                             <div
