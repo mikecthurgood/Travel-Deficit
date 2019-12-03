@@ -17,8 +17,14 @@ class AddCountry extends React.Component {
         this.setState({ filterValue: e.target.value })
     }
 
+    countries = () => {
+        if (this.props.filter === 'All') return this.props.countries
+        if (this.props.filter === 'visited') return this.props.countries.filter(country => this.props.visitedCountries.includes(country.code))
+        if (this.props.filter === 'not-visited') return this.props.countries.filter(country => !this.props.visitedCountries.includes(country.code))
+    }
+
     render() {
-        let countries = this.props.countries
+        let countries = this.countries()
         let sortedCountries = countries.length > 0 && countries.sort((a, b) => a.name.localeCompare(b.name))
         // console.log(countries)
         console.log(sortedCountries)
@@ -27,13 +33,13 @@ class AddCountry extends React.Component {
 
         return (
             <div className='country-list-container'>
-                <div className='home-page-title'><h3>Select a country to view stats and options or <Link to='/'>find on map</Link></h3></div>
 
                 <div className='country-list'>
+                    <div className='country-list-page-title'><h3>Select a country to view stats and options or <Link to='/'>find on map</Link></h3></div>
                     <div className='filters'>
-                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('all')} fluid>All Countries</Button></div>
-                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('visited')} fluid>Visited Only</Button></div>
-                        <div className='filter-button'><Button color={'blue'} onClick={() => setFilter('not-visited')} fluid>Not Visited Only</Button></div>
+                        <div className='filter-button'><Button color={this.props.filter === 'All' ? 'orange' : 'blue'} onClick={() => setFilter('All')} fluid>All</Button></div>
+                        <div className='filter-button'><Button color={this.props.filter === 'visited' ? 'orange' : 'blue'} onClick={() => setFilter('visited')} fluid>Visited</Button></div>
+                        <div className='filter-button'><Button color={this.props.filter === 'not-visited' ? 'orange' : 'blue'} onClick={() => setFilter('not-visited')} fluid>Not Visited</Button></div>
                     </div>
                     <input type="text" placeholder='Search Countries' onChange={this.handleChange} id='add-country-search-filter' />
                     <div className='country-list-items'>
@@ -60,7 +66,7 @@ class AddCountry extends React.Component {
                     addToWishList={addToWishList}
                     wishlist={wishlist}
                 />
-            </div>
+            </div >
         )
     }
 }

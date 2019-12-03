@@ -250,6 +250,7 @@ class App extends React.PureComponent {
                   setFilter={this.setFilter}
                   addToWishList={this.addToWishList}
                   wishlist={this.state.wishlist}
+                  filter={this.state.addCountryFilter}
 
                 />
               } />

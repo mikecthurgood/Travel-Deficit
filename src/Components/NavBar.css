@@ -56,10 +56,16 @@
   width: 100%;
   display: flex;
   z-index: 999;
-  /* max-width: 1200px; */
-
-
-  /* border: solid; */
-  /* border-color: #282c34 */
+  
 }
+
+.secondary-nav h4 {
+color: white;
+font-size: medium;
+}
+
+.secondary-nav h4:hover {
+  color: #4953da;
+  font-size: medium;
+  }
 
