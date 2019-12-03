@@ -1,6 +1,6 @@
 import React from 'react'
 import API from '../Helpers/API'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import './Recommendations.css';
 // import API from '../Helpers/API'
 
@@ -26,7 +26,7 @@ class Recommendations extends React.Component {
         const wishlist = this.props.countries.length > 0 && this.props.countries.filter(country => this.props.wishlist.includes(country.id))
         console.log(wishlist)
 
-        // this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
+        this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
 
         this.props.countries.length > 0 && wishlist.map(country => API.travelLocations(country.name).then
             (json => console.log(json['Places'])))
@@ -57,19 +57,38 @@ class Recommendations extends React.Component {
     render() {
         const wl = this.state.wishlist
         return (
-            <div className='recommendations-page-container'>
-                <h1>Recommendations Coming Soon!</h1>
-                {/* {this.props.countries.length > 0 && wl.map(country => (
-                    <Card className='recommendation-card'>
-                        <Card.Header>
-                            <h2>{country.id}</h2>
-                        </Card.Header>
-                        <Card.Content>
-                            <img className='country-image' src={country.images[0].source_url} />
-                        </Card.Content>
-                    </Card>
-                ))} */}
-            </div>
+            <>
+                <br />
+                <h1>Recommendations Coming Soon</h1>
+                <div className='recommendations-page-container'>
+                    {wl.length > 0 ? <>
+                        <div className='wishlist'><h2>Your Wishlist</h2></div>
+                        {this.props.countries.length > 0 && wl.map(country => (
+                            <Card className='recommendation-card'>
+                                <Card.Header>
+                                    <h2>{country.id}</h2>
+                                </Card.Header>
+                                <Card.Content className='country-image-container'>
+                                    <div className='country-image-inner-container'>
+                                        <img className='country-image' src={country.images[0].source_url} />
+                                    </div>
+                                </Card.Content>
+                                <Card.Content>
+                                    <div className='suggested-trip'>
+                                        <strong>Destination City:</strong> some city in {country.name}<br />
+                                        <strong>Outbound:</strong> some date soon<br />
+                                        <strong>Return:</strong> some later date<br />
+                                        <strong>Airline:</strong> Some kind of airline ✈️<br />
+                                    </div>
+                                </Card.Content>
+                                <Card.Content>
+                                    <Button fluid>Find more trips to {country.name} <em>(coming soon)</em></Button>
+                                </Card.Content>
+                            </Card>
+                        ))}</> :
+                        <h2>Add some countries to your wishlist to view recommendations</h2>}
+                </div>
+            </>
         )
     }
 }
