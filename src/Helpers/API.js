@@ -37,7 +37,7 @@ class API {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-                "x-rapidapi-key": "0d5efc74c5msh7dfd2aaa64fdf54p129ba0jsne3580f668b49",
+                "x-rapidapi-key": "571c034a1amshba07a35df5f1f2bp163af5jsn9566c59b5b86",
                 'Content-Type': 'application/json'
             }
         })
