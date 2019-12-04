@@ -49,9 +49,19 @@ class API {
         this.post(baseUrl + 'countries/recommendations', { departureLocation, destination, departureDate, returnDate })
     ).then(console.log)
 
-    // static recommendations = (country) => (
-    //     fetch(`https://www.triposo.com/api/20190906/location.json?id=${country}&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f`).then(resp => resp.json()).then(console.log)
-    // )
+    static getQuotes = (destination) => (
+        fetch(`https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/LOND-sky/${destination}/anytime?inboundpartialdate=anytime`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+                "x-rapidapi-key": "571c034a1amshba07a35df5f1f2bp163af5jsn9566c59b5b86"
+            }
+        })
+            .then(resp => resp.json())
+            .catch(err => {
+                console.log(err);
+            })
+    )
 
     static validate = (fb_id) => (
         fetch(baseUrl + 'validate', {

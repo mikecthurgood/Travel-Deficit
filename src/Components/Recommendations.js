@@ -2,6 +2,7 @@ import React from 'react'
 import API from '../Helpers/API'
 import { Card, Button } from 'semantic-ui-react'
 import './Recommendations.css';
+import RecommendationTrips from './RecommendationTrips'
 // import API from '../Helpers/API'
 
 
@@ -19,7 +20,8 @@ const configObj = (type, body = null) => {
 class Recommendations extends React.Component {
 
     state = {
-        wishlist: []
+        wishlist: [],
+        quotes: []
     }
 
     componentDidMount() {
@@ -29,7 +31,8 @@ class Recommendations extends React.Component {
         this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
 
         this.props.countries.length > 0 && wishlist.map(country => API.travelLocations(country.name)
-            .then(json => API.createFlightSession("LOND-sky", json['Places'][1]['PlaceId'], this.dateInXDays(7), this.dateInXDays(14))))
+            .then(json => json['Places'][1]['CityId'] !== '-sky' ? API.getQuotes(json['Places'][1]['PlaceId']) : null).then(json => this.setState({ quotes: [...this.state.quotes, { name: country.name, data: json }] })))
+        // (json => API.createFlightSession("LOND-sky", json['Places'][1]['PlaceId'], this.dateInXDays(7), this.dateInXDays(14))))
 
         // console.log(json['Places'][1])))
         // (json => json['Places'].map(country => console.log(country['PlaceName']))))
@@ -62,10 +65,9 @@ class Recommendations extends React.Component {
         return date
     }
 
-
-
     render() {
         const wl = this.state.wishlist
+        const { quotes } = this.state
         return (
             <>
                 <br />
@@ -74,6 +76,7 @@ class Recommendations extends React.Component {
                     {wl.length > 0 ? <>
                         <div className='wishlist'><h2>Your Wishlist</h2></div>
                         {this.props.countries.length > 0 && wl.map(country => (
+
                             <Card className='recommendation-card'>
                                 <Card.Header>
                                     <h2>{country.id}</h2>
@@ -85,14 +88,11 @@ class Recommendations extends React.Component {
                                 </Card.Content>
                                 <Card.Content>
                                     <div className='suggested-trip'>
-                                        <strong>Destination City:</strong> some city in {country.name}<br />
-                                        <strong>Outbound:</strong> some date soon<br />
-                                        <strong>Return:</strong> some later date<br />
-                                        <strong>Airline:</strong> Some kind of airline ✈️<br />
+                                        <RecommendationTrips countryName={country.name} quotes={this.state.quotes} />
                                     </div>
                                 </Card.Content>
                                 <Card.Content>
-                                    <Button fluid>Find more trips to {country.name} <em>(coming soon)</em></Button>
+                                    <a href="https://www.skyscanner.net/" target='popup' onClick="window.open('https://www.skyscanner.net/','popup','width=600,height=600'); return false;"><Button fluid> Visit Skyscanner for more flights </Button></a>
                                 </Card.Content>
                             </Card>
                         ))}</> :

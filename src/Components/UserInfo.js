@@ -15,6 +15,14 @@ class UserInfo extends React.Component {
         })
     }
 
+    updateAge = (e) => {
+        e.preventDefault()
+        this.props.updateAge(e.target['ageInput'].value)
+        this.setState({
+            ageFormVisible: false
+        })
+    }
+
     render() {
         const { countries, visitedCountries, userName, userAge, badges, userImage, updateAge } = this.props
         const filteredCountries = countries.length > 0 && countries.filter(country => visitedCountries.includes(country.code)).sort((a, b) => a.name.localeCompare(b.name))
@@ -34,7 +42,7 @@ class UserInfo extends React.Component {
                                     <strong>Age</strong>: {userAge ?
                                         <span className='age-form-span'>{`${userAge}`}
                                             {this.state.ageFormVisible &&
-                                                <form onSubmit={updateAge}>
+                                                <form onSubmit={this.updateAge} >
                                                     <input className='age-form' size="4" type="number" name='ageInput' />
                                                 </form>}
                                             <button

@@ -172,9 +172,7 @@ class App extends React.PureComponent {
     })
   }
 
-  updateAge = (e) => {
-    e.preventDefault()
-    const age = e.target['ageInput'].value
+  updateAge = (age) => {
     if (this.state.username === 'Guest') {
       this.setState({ userAge: age })
     } else {
