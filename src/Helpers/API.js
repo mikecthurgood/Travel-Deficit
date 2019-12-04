@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/'
+const baseUrl = 'https://travel-deficit-api.herokuapp.com/'
 const usersUrl = baseUrl + 'users/'
 const addCountryToUserURL = baseUrl + 'add-user-country'
 const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
