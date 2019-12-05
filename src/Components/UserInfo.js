@@ -37,7 +37,7 @@ class UserInfo extends React.Component {
                     </Card.Header>
                         <Card.Content >
                             <div className='user-details'>
-                                <p><strong>Username</strong>: {userName}</p>
+                                <p className='user-details-card-p'><strong>Username</strong>: {userName}</p>
                                 <>
                                     <strong>Age</strong>: {userAge ?
                                         <span className='age-form-span'>{`${userAge}`}
@@ -61,10 +61,10 @@ class UserInfo extends React.Component {
                                             </button>
                                         </span>}
                                 </>
-                                <p><strong>Travel Deficit</strong>: {userAge ? <span> {visitedCountries.length - userAge} </span> : <span><em>Add age to calculate</em></span>}</p>
-                                <p><strong>Countries Visited</strong>: {visitedCountries.length}</p>
-                                <p><strong>Continents Visited</strong>: {continents.length}</p>
-                                <p><strong>Badges Earned</strong>: {badges && badges.length > 0 ? badges.length : <span>No badges earned yet</span>}</p>
+                                <p className='user-details-card-p'><strong>Travel Deficit</strong>: {userAge ? <span> {visitedCountries.length - userAge} </span> : <span><em>Add age to calculate</em></span>}</p>
+                                <p className='user-details-card-p'><strong>Countries Visited</strong>: {visitedCountries.length}</p>
+                                <p className='user-details-card-p'><strong>Regions Visited</strong>: {continents.length}</p>
+                                {/* <p className='user-details-card-p'><strong>Badges Earned</strong>: {badges && badges.length > 0 ? badges.length : <span>No badges earned yet</span>}</p> */}
                             </div>
                         </Card.Content>
                     </Card>
