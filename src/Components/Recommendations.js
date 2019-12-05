@@ -21,40 +21,38 @@ class Recommendations extends React.Component {
 
     state = {
         wishlist: [],
-        quotes: []
+        quotes: [],
+        countries: []
     }
 
     componentDidMount() {
-        const wishlist = this.props.countries.length > 0 && this.props.countries.filter(country => this.props.wishlist.includes(country.id))
-        console.log(wishlist)
+        // Promise.all(
+        //     this.props.countries.map(country => {
+        //         return fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json())
+        //     })
+        // ).then(countries => {
+        //     this.setState({
+        //         countries: countries.filter(a => a.length > 0).map(a => a[0])
+        //     })
+        //     const b = countries.filter(a => a.length > 0).map(a => a[0])
+        //     // console.log(b)
+        //     b.map(c => {
+        //         const d = this.props.countries.filter(country => country.name === c.name)
+        //         const imageUrl = c.images[0].source_url
+        //         API.addCountryImage(d[0].id, imageUrl)
+        //     })
+        // })
 
-        this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
 
-        this.props.countries.length > 0 && wishlist.map(country => API.travelLocations(country.name)
+
+        // const wishlist = this.props.countries.length > 0 && this.props.countries.filter(country => this.props.wishlist.includes(country.id))
+        // console.log(wishlist)
+
+        // this.props.countries.length > 0 && wishlist.map(country => fetch(`http://localhost:3004/countries?name=${country.name}`).then(resp => resp.json()).then(country => this.setState({ wishlist: [...this.state.wishlist, ...country] })))
+        const wl = this.props.countries.filter(country => this.props.wishlist.includes(country.id))
+        this.props.countries.length > 0 && wl.map(country => API.travelLocations(country.name)
             .then(json => json['Places'][1]['CityId'] !== '-sky' ? API.getQuotes(json['Places'][1]['PlaceId']) : null).then(json => this.setState({ quotes: [...this.state.quotes, { name: country.name, data: json }] })))
-        // (json => API.createFlightSession("LOND-sky", json['Places'][1]['PlaceId'], this.dateInXDays(7), this.dateInXDays(14))))
-
-        // console.log(json['Places'][1])))
-        // (json => json['Places'].map(country => console.log(country['PlaceName']))))
-        // console.log(this.state.wishlist)
-        // fetch('http://localhost:3004/countries').then(resp => resp.json()).then(console.log)
-
-        // this.props.countries.length > 0 && this.props.countries.map(country => this.trivosoTest(country.name))
-        // this.trivosoTest('Paraguay')
-        // fetch('https://www.triposo.com/api/20190906/location.json?id=Paraguay&account=SNWVY7BT&token=iwqr7pi47cyfp8tobp16qxx6luhn0k0f').then(resp => resp.json().then(console.log))
     }
-
-    // upload = (object) => {
-    //     fetch('http://localhost:3004/countries', configObj('POST', object))
-    //         .then(resp => resp.json()).then(console.log)
-    // }
-
-
-    // trivosoTest = (country) => {
-    //     API.recommendations(country).then(resp => {
-    //         this.upload(resp.results[0])
-    //     })
-    // }
 
     dateInXDays = (x = 0) => {
         let date = new Date();
@@ -66,37 +64,39 @@ class Recommendations extends React.Component {
     }
 
     render() {
-        const wl = this.state.wishlist
-        const { quotes } = this.state
+        // const mapped = this.state.countries
+        //     .filter(ctry => ctry && ctry.data && ctry.data[0] && ctry.data[0].images)
+        //     .map(ctry => ctry.data[0].images[0])
+        // console.log(mapped)
+
+        const wl = this.props.countries.filter(country => this.props.wishlist.includes(country.id))
+        const quotes = this.state.quotes.filter(quote => quote.data !== null)
         return (
             <>
-                <br />
-                <h1>Recommendations Coming Soon</h1>
                 <div className='recommendations-page-container'>
                     {wl.length > 0 ? <>
-                        <div className='wishlist'><h2>Your Wishlist</h2></div>
                         {this.props.countries.length > 0 && wl.map(country => (
 
-                            <Card className='recommendation-card'>
+                            <Card className='recommendation-card' key={country.id}>
                                 <Card.Header>
-                                    <h2>{country.id}</h2>
+                                    <h2>{country.name}</h2>
                                 </Card.Header>
                                 <Card.Content className='country-image-container'>
                                     <div className='country-image-inner-container'>
-                                        <img className='country-image' src={country.images[0].source_url} />
+                                        <img className='country-image' src={country.image_url} />
                                     </div>
                                 </Card.Content>
                                 <Card.Content>
                                     <div className='suggested-trip'>
-                                        <RecommendationTrips countryName={country.name} quotes={this.state.quotes} />
+                                        <RecommendationTrips countryName={country.name} quotes={quotes} />
                                     </div>
                                 </Card.Content>
                                 <Card.Content>
-                                    <a href="https://www.skyscanner.net/" target='popup' onClick="window.open('https://www.skyscanner.net/','popup','width=600,height=600'); return false;"><Button fluid> Visit Skyscanner for more flights </Button></a>
+                                    <a href="https://www.skyscanner.net/" target='popup' onClick={() => window.open('https://www.skyscanner.net/', 'popup', 'width=600,height=600')}><Button fluid> Visit Skyscanner for more flights </Button></a>
                                 </Card.Content>
                             </Card>
                         ))}</> :
-                        <h2>Add some countries to your wishlist to view recommendations</h2>}
+                        <h2>Add a few more countries to your wishlist to enable recommendations</h2>}
                 </div>
             </>
         )

@@ -2,11 +2,16 @@ const baseUrl = 'https://travel-deficit-api.herokuapp.com/'
 const usersUrl = baseUrl + 'users/'
 const addCountryToUserURL = baseUrl + 'add-user-country'
 const addCountryToWishListURL = baseUrl + 'add-to-wishlist'
+const addImageToCountryURL = baseUrl + 'countries/'
 
 class API {
     static countryInfo = () => (
         fetch(baseUrl + '/countries-and-info')
             .then(res => res.json())
+    )
+
+    static addCountryImage = (countryId, imageUrl) => (
+        this.patch(addImageToCountryURL + countryId, { image_url: imageUrl })
     )
 
     static addCountryToUser = (userId, countryId) => (

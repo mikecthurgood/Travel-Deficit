@@ -23,7 +23,7 @@ class App extends React.PureComponent {
     visitedCountries: [],
     visitedCountriesByName: [],
     wishlist: [],
-    countries: {},
+    countries: [],
     selectedCountry: "",
     sidebarVisible: false,
     activeIndex: 0,

@@ -7,7 +7,7 @@ const RecommendationTrips = ({ quotes, countryName }) => {
     const selectedQuote = quotes.length > 0 && country.map(quote => quote.data['Quotes'][0])
     const destination = quotes.length > 0 && country[0] && country[0].data.Places.filter(place => place['PlaceId'] === selectedQuote[0].OutboundLeg.DestinationId)
     const departure = quotes.length > 0 && country[0] && country[0].data.Places.filter(place => place['PlaceId'] === selectedQuote[0].OutboundLeg.OriginId)
-    const departureDate = quotes.length > 0 && selectedQuote[0] && selectedQuote[0].OutboundLeg.DepartureDate
+    const departureDate = quotes.length > 0 && selectedQuote[0] && selectedQuote[0].OutboundLeg.DepartureDate.replace('T00:00:00', '')
     const carrier = quotes.length > 0 && country[0] && country[0].data.Carriers.filter(carrier => carrier.CarrierId === selectedQuote[0].OutboundLeg.CarrierIds[0])
     const price = quotes.length > 0 && selectedQuote[0] && selectedQuote[0].MinPrice
 

@@ -85,13 +85,14 @@
 
     .profile-container {
         position: relative;
+        
         top: 20px;
         margin-left: 1rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        height: 100%;
+        
     }
     
     .profile-row {
