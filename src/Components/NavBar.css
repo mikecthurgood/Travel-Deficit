@@ -4,7 +4,7 @@
     min-width: 100px;
     position: absolute;
     top: 35%;
-    left: 38%;
+    left: calc(43vw - (/* width */140px / 2));  
   }
 
 
