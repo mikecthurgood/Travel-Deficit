@@ -75,7 +75,7 @@ class Recommendations extends React.Component {
             <>
                 <div className='recommendations-page-container'>
                     {wl.length > 0 ? <>
-                        {this.props.countries.length > 0 && wl.map(country => (
+                        {this.props.countries.length > 0 && wl.map(country => country.image_url && (
 
                             <Card className='recommendation-card' key={country.id}>
                                 <Card.Header>
