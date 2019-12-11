@@ -28,7 +28,7 @@ class AddCountry extends React.Component {
         let sortedCountries = countries.length > 0 && countries.sort((a, b) => a.name.localeCompare(b.name))
         let filteredCountries = countries.length > 0 && sortedCountries.filter(country => country.name.toLowerCase().includes(this.state.filterValue.toLowerCase()))
         const { selectedCountry, visitedCountries, sidebarVisible, closeSideBar, handleSideBarAccordionClick, activeIndex, addOrRemoveCountry, handleCountryListClick, setFilter, addToWishList, wishlist } = this.props
-
+        const continents = filteredCountries.length > 0 && [...new Set(filteredCountries.map(country => country.continent))].sort()
         return (
             <div className='country-list-container'>
 

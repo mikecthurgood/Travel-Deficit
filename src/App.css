@@ -91,7 +91,7 @@ path {
 }
 
 .App {
-  width: 100%;
+  min-width: 100%;
   max-width: 1400px;
   background-image: url('https://texturify.com/content/10778/Sky%20Background5.jpg');
   background-repeat: no-repeat;
